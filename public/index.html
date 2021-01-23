@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Hendi Chat-App</title>
         <link rel="icon" href="/img/favicon.png">
-        <link rel="stylesheet" href="/css/styles.min.css">
+        <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
         <div class="centered-form">
@@ -15,10 +15,20 @@
                     <label for="username">Display name</label>
                     <input type="text" name="username" placeholder="Display name" required>
                     <label for="room">Room</label>
-                    <input type="text" name="room" placeholder="Room" required>
+                    <div class="custom-select" style="width:200px;">
+                        <select name="room">
+                            <option value="0">Select Room</option>
+                            <option value="General">General</option>
+                            <option value="Gaming">Gaming</option>
+                            <option value="Sports">Sports</option>
+                            <option value="Study">Study</option>
+                        </select>
+                    </div>
+                      
                     <button>Join</button>
                 </form>
             </div>
         </div>
+        <script src="/js/styles.js"></script>
     </body>
 </html>

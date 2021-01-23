@@ -23,17 +23,22 @@ const port = process.env.PORT || 3000
 const publicDirectoryPath =path.join(__dirname,'../public')
 
 app.use(express.static(publicDirectoryPath))
-
+const rooms =['General', 'Gaming', 'Sports', 'Study']
 
 io.on('connection',(socket)=>{
     console.log('New WebSocket Connection')
     
     socket.on('join',({username,room},callback)=>{
+        
         const{error,user}=addUser({id:socket.id,username,room})
+        
+        const validRoom =rooms.find((__room)=> __room ===room)
         if(error){
             return callback(error)
         }
-        
+        if(!validRoom){
+            return callback('Choose a Valid Room')
+        }
         socket.join(user.room)
         
         socket.emit('message',generateMessage('Admin','Welcome'))
